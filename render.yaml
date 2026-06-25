@@ -1,0 +1,20 @@
+databases:
+  - name: historo-db
+    plan: free
+    databaseName: historo
+    user: historo
+
+services:
+  - type: web
+    name: historo-backend
+    runtime: docker
+    plan: free
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: historo-db
+          property: connectionString
