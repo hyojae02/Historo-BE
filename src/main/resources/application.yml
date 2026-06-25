@@ -1,16 +1,19 @@
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 app:
   s3:
     base-url: https://historo-images.s3.ap-northeast-2.amazonaws.com
+  jwt:
+    secret: ${JWT_SECRET:historo-dev-secret-key-at-least-32-chars-long!!}
+    expiration-ms: 86400000
 
 spring:
   jackson:
     default-property-inclusion: non_null
 
   profiles:
-    active: dev
+    active: ${SPRING_PROFILES_ACTIVE:dev}
 
 ---
 # 로컬 개발용 (H2 인메모리 DB)
@@ -48,7 +51,7 @@ spring:
     password: ${DB_PASSWORD:}
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
