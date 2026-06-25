@@ -47,11 +47,11 @@ public class DataInitializer implements CommandLineRunner {
         }
 
         log.info("Loading initial data into DB...");
-        loadEvents();
-        loadHeritage();
-        loadTrees();
-        loadKidStories();
-        loadComics();
+        try { loadEvents(); } catch (Exception e) { log.error("Failed to load events", e); }
+        try { loadHeritage(); } catch (Exception e) { log.error("Failed to load heritage", e); }
+        try { loadTrees(); } catch (Exception e) { log.error("Failed to load trees", e); }
+        try { loadKidStories(); } catch (Exception e) { log.error("Failed to load kid stories", e); }
+        try { loadComics(); } catch (Exception e) { log.error("Failed to load comics", e); }
         log.info("Data initialization complete");
     }
 
