@@ -12,7 +12,7 @@ public class StoryTree {
     @Id
     private String eventId;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "TEXT")
     private String treeJson;
 
     protected StoryTree() {}

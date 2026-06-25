@@ -12,7 +12,7 @@ public class ComicEntity {
     @Id
     private String episodeId;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "TEXT")
     private String comicJson;
 
     protected ComicEntity() {}
